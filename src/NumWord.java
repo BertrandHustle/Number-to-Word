@@ -6,6 +6,10 @@ public class NumWord {
 
     //represent commas with 'and's
 
+    /**
+     * method that does the work
+     */
+
     public void writeNumWord() {
 
         //initializing strings
@@ -20,7 +24,7 @@ public class NumWord {
 
         //loops over number (as string)
 
-        for (int i = 1; i<= input.length(); i++) {
+        for (int i = 1; i <= input.length(); i++) {
 
             //handling empty string
 
@@ -39,7 +43,7 @@ public class NumWord {
                 continue;
 
             }
-
+            
             //exception if user types a single 0
 
             if (input.equals("0")) {
@@ -47,11 +51,44 @@ public class NumWord {
                 System.out.println("zero");
                 continue;
 
-            } else {
+            }
 
-                // ones place switch
+            //print tens digit
 
-                switch (Integer.parseInt(input)) {
+            switch(Character.getNumericValue(input.charAt(i - 1))) {
+
+                case 2:
+                    System.out.print("twenty-");
+                    break;
+                case 3:
+                    System.out.print("thirty-");
+                    break;
+                case 4:
+                    System.out.print("forty-");
+                    break;
+                case 5:
+                    System.out.print("fifty-");
+                    break;
+                case 6:
+                    System.out.print("sixty-");
+                    break;
+                case 7:
+                    System.out.print("seventy-");
+                    break;
+                case 8:
+                    System.out.print("eighty-");
+                    break;
+                case 9:
+                    System.out.print("ninety-");
+                    break;
+                default:
+                    break;
+
+            }
+
+            // ones place switch
+
+                switch (Character.getNumericValue(input.charAt(i))) {
 
                     case 1:
                         System.out.println("one");
@@ -91,10 +128,15 @@ public class NumWord {
 
                 }
 
+
             }
 
         }
 
     }
 
-}
+
+
+
+
+
