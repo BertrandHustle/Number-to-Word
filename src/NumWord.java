@@ -111,12 +111,76 @@ public class NumWord {
 
                 }
 
+                //print teens
+
+                if (ten && Character.getNumericValue(input.charAt(input.length() - 1)) >= 1 &&
+                        Character.getNumericValue(input.charAt(input.length() - 1)) <= 9 &&
+                        Character.getNumericValue(input.charAt(input.length() - 2)) == 1){
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 1))) {
+
+                        case 1:
+                            System.out.println("eleven");
+                            one = false;
+                            break;
+
+                        case 2:
+                            System.out.println("twelve");
+                            one = false;
+                            break;
+
+                        case 3:
+                            System.out.println("thirteen");
+                            one = false;
+                            break;
+
+                        case 4:
+                            System.out.println("fourteen");
+                            one = false;
+                            break;
+
+                        case 5:
+                            System.out.println("fifteen");
+                            one = false;
+                            break;
+
+                        case 6:
+                            System.out.println("sixteen");
+                            one = false;
+                            break;
+
+                        case 7:
+                            System.out.println("seventeen");
+                            one = false;
+                            break;
+
+                        case 8:
+                            System.out.println("eighteen");
+                            one = false;
+                            break;
+
+                        case 9:
+                            System.out.println("nineteen");
+                            one = false;
+                            break;
+
+                    }
+
+                    ten = false;
+                }
+
+
+
                 //print tens digit
 
                 if (ten) {
 
                     switch (Character.getNumericValue(input.charAt(input.length() -2))) {
 
+                        case 1:
+                            System.out.println("ten");
+                            one = false;
+                            break;
                         case 2:
                             System.out.print("twenty-");
                             break;
