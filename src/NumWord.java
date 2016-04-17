@@ -13,10 +13,13 @@ public class NumWord {
             //initializing
 
             String input = "";
+            boolean million = false;
+            boolean hundredThousand = false;
+            boolean tenThousand = false;
+            boolean thousand = false;
             boolean hundred = false;
             boolean ten = false;
             boolean one = false;
-            int place = 0;
 
             //Scanner, takes input as String and converts it to int
 
@@ -52,6 +55,30 @@ public class NumWord {
 
                 //set boolean digit rules
 
+                if (input.length() >= 7){
+
+                    million = true;
+
+                }
+
+                if (input.length() >= 6){
+
+                    hundredThousand = true;
+
+                }
+
+                if (input.length() >= 5){
+
+                    tenThousand = true;
+
+                }
+                
+                if (input.length() >= 4){
+                    
+                    thousand = true;
+                    
+                }
+
                 if (input.length() >= 3){
 
                     hundred = true;
@@ -70,6 +97,100 @@ public class NumWord {
 
                 }
 
+                //print ten thousands digit
+
+                if (tenThousand) {
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 5))) {
+
+                        case 1:
+                            System.out.print("ten");
+                            break;
+                        case 2:
+                            System.out.print("twenty");
+                            break;
+                        case 3:
+                            System.out.print("thirty");
+                            break;
+                        case 4:
+                            System.out.print("forty");
+                            break;
+                        case 5:
+                            System.out.print("fifty");
+                            break;
+                        case 6:
+                            System.out.print("sixty");
+                            break;
+                        case 7:
+                            System.out.print("seventy");
+                            break;
+                        case 8:
+                            System.out.print("eighty");
+                            break;
+                        case 9:
+                            System.out.print("ninety");
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                }
+
+                //handles potential hyphen for numbers e.g. 33,000
+
+                if (tenThousand && thousand) {
+
+                    System.out.print("-");
+
+                }
+
+                else if (tenThousand && !thousand){
+
+                    System.out.print("thousand ");
+
+                }
+
+                //print thousands digit
+
+                if (thousand) {
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 4))) {
+
+                        case 1:
+                            System.out.print("one thousand, ");
+                            break;
+                        case 2:
+                            System.out.print("two thousand, ");
+                            break;
+                        case 3:
+                            System.out.print("three thousand, ");
+                            break;
+                        case 4:
+                            System.out.print("four thousand, ");
+                            break;
+                        case 5:
+                            System.out.print("five thousand, ");
+                            break;
+                        case 6:
+                            System.out.print("six thousand, ");
+                            break;
+                        case 7:
+                            System.out.print("seven thousand, ");
+                            break;
+                        case 8:
+                            System.out.print("eight thousand, ");
+                            break;
+                        case 9:
+                            System.out.print("nine thousand, ");
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                }
+
 
                 //print hundreds digit
 
@@ -78,36 +199,46 @@ public class NumWord {
                     switch (Character.getNumericValue(input.charAt(input.length() - 3))) {
 
                         case 1:
-                            System.out.print("one hundred and ");
+                            System.out.print("one hundred ");
                             break;
                         case 2:
-                            System.out.print("two hundred and ");
+                            System.out.print("two hundred ");
                             break;
                         case 3:
-                            System.out.print("three hundred and ");
+                            System.out.print("three hundred ");
                             break;
                         case 4:
-                            System.out.print("four hundred and ");
+                            System.out.print("four hundred ");
                             break;
                         case 5:
-                            System.out.print("five hundred and ");
+                            System.out.print("five hundred ");
                             break;
                         case 6:
-                            System.out.print("six hundred and ");
+                            System.out.print("six hundred ");
                             break;
                         case 7:
-                            System.out.print("seven hundred and ");
+                            System.out.print("seven hundred ");
                             break;
                         case 8:
-                            System.out.print("eight hundred and ");
+                            System.out.print("eight hundred ");
                             break;
                         case 9:
-                            System.out.print("nine hundred and ");
+                            System.out.print("nine hundred ");
                             break;
                         default:
                             break;
 
                     }
+
+                }
+
+                //exception conditional for 'and'
+
+                if ((((Character.getNumericValue(input.charAt(input.length() - 1)) != 0)) ||
+                    ((Character.getNumericValue(input.charAt(input.length() - 2)) != 0))) &&
+                    input.length() > 2) {
+
+                    System.out.print("and ");
 
                 }
 
@@ -169,8 +300,6 @@ public class NumWord {
                     ten = false;
                 }
 
-
-
                 //print tens digit
 
                 if (ten) {
@@ -182,34 +311,43 @@ public class NumWord {
                             one = false;
                             break;
                         case 2:
-                            System.out.print("twenty-");
+                            System.out.print("twenty");
                             break;
                         case 3:
-                            System.out.print("thirty-");
+                            System.out.print("thirty");
                             break;
                         case 4:
-                            System.out.print("forty-");
+                            System.out.print("forty");
                             break;
                         case 5:
-                            System.out.print("fifty-");
+                            System.out.print("fifty");
                             break;
                         case 6:
-                            System.out.print("sixty-");
+                            System.out.print("sixty");
                             break;
                         case 7:
-                            System.out.print("seventy-");
+                            System.out.print("seventy");
                             break;
                         case 8:
-                            System.out.print("eighty-");
+                            System.out.print("eighty");
                             break;
                         case 9:
-                            System.out.print("ninety-");
+                            System.out.print("ninety");
                             break;
                         default:
                             break;
 
                     }
                 }
+
+                // hyphen exception two
+
+                if (ten && one && ((Character.getNumericValue(input.charAt(input.length() - 1)) != 0))) {
+
+                    System.out.print("-");
+
+                }
+
                 // ones place switch
 
                 if (one) {
