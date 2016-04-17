@@ -181,6 +181,56 @@ public class NumWord {
 
                 }
 
+                //print teens (for thousands)
+
+                if (tenThousand && Character.getNumericValue(input.charAt(input.length() - 4)) >= 1 &&
+                        Character.getNumericValue(input.charAt(input.length() - 4)) <= 9 &&
+                        Character.getNumericValue(input.charAt(input.length() - 5)) == 1){
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 4))) {
+
+                        case 1:
+                            System.out.print("eleven thousand, ");
+                            break;
+
+                        case 2:
+                            System.out.print("twelve thousand, ");
+                            break;
+
+                        case 3:
+                            System.out.print("thirteen thousand, ");
+                            break;
+
+                        case 4:
+                            System.out.print("fourteen thousand, ");
+                            break;
+
+                        case 5:
+                            System.out.print("fifteen thousand, ");
+                            break;
+
+                        case 6:
+                            System.out.print("sixteen thousand, ");
+                            break;
+
+                        case 7:
+                            System.out.print("seventeen thousand, ");
+                            break;
+
+                        case 8:
+                            System.out.print("eighteen thousand, ");
+                            break;
+
+                        case 9:
+                            System.out.print("nineteen thousand, ");
+                            break;
+
+                    }
+
+                    tenThousand = false;
+                    thousand = false;
+                }
+
                 //print ten thousands digit
 
                 if (tenThousand) {
@@ -231,9 +281,11 @@ public class NumWord {
 
                 else if (tenThousand && !thousand){
 
-                    System.out.print("thousand ");
+                    System.out.print(" thousand ");
 
                 }
+
+
 
                 //print thousands digit
 
@@ -269,6 +321,7 @@ public class NumWord {
                             System.out.print("nine thousand, ");
                             break;
                         default:
+                            System.out.print("thousand ");
                             break;
 
                     }
