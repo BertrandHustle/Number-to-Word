@@ -271,15 +271,26 @@ public class NumWord {
 
                 }
 
+                if (Integer.parseInt(input) % 1000000 == 0) {
+
+                    System.out.println();
+                    continue;
+
+                }
+
                 //handles potential hyphen for numbers e.g. 33,000
 
-                if (tenThousand && thousand) {
+                else if ((tenThousand && thousand &&
+                        ((Character.getNumericValue(input.charAt(input.length() - 4))) != 0)) &&
+                        ((Character.getNumericValue(input.charAt(input.length() - 5))) != 0)) {
 
                     System.out.print("-");
 
                 }
 
-                else if (tenThousand && !thousand){
+                else if (((tenThousand && !thousand) &&
+                ((Character.getNumericValue(input.charAt(input.length() - 4))) != 0)) &&
+                ((Character.getNumericValue(input.charAt(input.length() - 5))) != 0)) {
 
                     System.out.print(" thousand ");
 
@@ -321,9 +332,14 @@ public class NumWord {
                             System.out.print("nine thousand, ");
                             break;
                         default:
-                            System.out.print("thousand ");
-                            break;
+                            if ((Character.getNumericValue(input.charAt(input.length() - 4))) != 0) {
+                                System.out.print("thousand ");
+                                break;
+                            }
 
+                            else {
+                                break;
+                            }
                     }
 
                 }
