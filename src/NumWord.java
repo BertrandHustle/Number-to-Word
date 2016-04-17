@@ -25,13 +25,21 @@ public class NumWord {
 
             System.out.println("Enter a number");
             Scanner userInput = new Scanner(System.in);
-            input = userInput.next();
+            input = userInput.nextLine();
 
             //handling empty string
+
+            if (input.length() > 7) {
+
+                System.out.println("That number is too big! 7 digits is my max.");
+                continue;
+
+            }
 
             if (input.equals("")) {
 
                 System.out.println("Type a number!");
+                System.out.println("");
                 continue;
 
             }
@@ -94,6 +102,82 @@ public class NumWord {
                 if (input.length() >= 1){
 
                     one = true;
+
+                }
+
+                if (million) {
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 7))) {
+
+                        case 1:
+                            System.out.print("one million, ");
+                            break;
+                        case 2:
+                            System.out.print("two million, ");
+                            break;
+                        case 3:
+                            System.out.print("three million, ");
+                            break;
+                        case 4:
+                            System.out.print("four million, ");
+                            break;
+                        case 5:
+                            System.out.print("five million, ");
+                            break;
+                        case 6:
+                            System.out.print("six million, ");
+                            break;
+                        case 7:
+                            System.out.print("seven million, ");
+                            break;
+                        case 8:
+                            System.out.print("eight million, ");
+                            break;
+                        case 9:
+                            System.out.print("nine million, ");
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                }
+
+                if (hundredThousand) {
+
+                    switch (Character.getNumericValue(input.charAt(input.length() - 6))) {
+
+                        case 1:
+                            System.out.print("one hundred ");
+                            break;
+                        case 2:
+                            System.out.print("two hundred ");
+                            break;
+                        case 3:
+                            System.out.print("three hundred ");
+                            break;
+                        case 4:
+                            System.out.print("four hundred ");
+                            break;
+                        case 5:
+                            System.out.print("five hundred ");
+                            break;
+                        case 6:
+                            System.out.print("six hundred ");
+                            break;
+                        case 7:
+                            System.out.print("seven hundred ");
+                            break;
+                        case 8:
+                            System.out.print("eight hundred ");
+                            break;
+                        case 9:
+                            System.out.print("nine hundred ");
+                            break;
+                        default:
+                            break;
+
+                    }
 
                 }
 
@@ -342,9 +426,15 @@ public class NumWord {
 
                 // hyphen exception two
 
-                if (ten && one && ((Character.getNumericValue(input.charAt(input.length() - 1)) != 0))) {
+                if (ten && ((Character.getNumericValue(input.charAt(input.length() - 1)) != 0))) {
 
                     System.out.print("-");
+
+                }
+
+                else if (input.length() != 1){
+
+                    System.out.println(" ");
 
                 }
 
